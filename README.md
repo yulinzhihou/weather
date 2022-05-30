@@ -3,7 +3,7 @@
 <p align="center"> A weather SDK for Amap.</p>
 
 
-[![Tests](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml/badge.svg)](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml)
+[![Tests](https://github.com/yulinzhihou/weather/actions/workflows/test.yml/badge.svg)](https://github.com/yulinzhihou/weather/actions/workflows/test.yml)
 
 ## 安装
 
