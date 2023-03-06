@@ -19,7 +19,7 @@ class WeatherTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
 
-        $this->expectExceptionMessage('Invalid type value (base / all): foo');
+        $this->expectExceptionMessage('Invalid type value(live / forecast): foo');
 
         $w->getWeather('深圳','foo');
 
@@ -69,7 +69,7 @@ class WeatherTest extends TestCase
 
         $w->allows()->getHttpClient()->andReturn($client);
 
-        $this->assertSame(['success'=>true],$w->getWeather('长沙'));
+        $this->assertSame(['success'=>true],$w->getWeather('长沙'),'live','json');
 
 
         //xml
@@ -83,7 +83,7 @@ class WeatherTest extends TestCase
 
         $w->allows()->getHttpClient()->andReturn($client);
 
-        $this->assertSame('<hello>content</hello>',$w->getWeather('长沙','base','xml'));
+        $this->assertSame('<hello>content</hello>',$w->getWeather('长沙','live','xml'));
 
     }
 
@@ -122,5 +122,24 @@ class WeatherTest extends TestCase
 
         $this->assertSame(5000,$w->getHttpClient()->getConfig('timeout'));
 
+    }
+
+    public function testGetLiveWeather()
+    {
+        $w = \Mockery::mock(Weather::class,['mock-key'])->makePartial();
+
+        $w->expects()->getWeather('长沙','live','json')->andReturn(['success'=>true]);
+
+        $this->assertSame(['success'=>true],$w->getLiveWeather('长沙'));
+
+    }
+
+    public function testGetForecastWeather()
+    {
+        $w = \Mockery::mock(Weather::class,['mock-key'])->makePartial();
+
+        $w->expects()->getWeather('长沙','forecast','json')->andReturn(['success'=>true]);
+
+        $this->assertSame(['success'=>true],$w->getForecastWeather('长沙'));
     }
 }

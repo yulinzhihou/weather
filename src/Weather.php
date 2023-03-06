@@ -63,16 +63,21 @@ class Weather
      * @throws HttpException
      * @throws InvalidArgumentException
      */
-    public function getWeather(string $city, string $type = 'base', string $format = 'json'): array|string
+    public function getWeather(string $city, string $type = 'live', string $format = 'json'): array|string
     {
         $url = "https://restapi.amap.com/v3/weather/weatherInfo";
+
+        $types = [
+            'live' => 'base',
+            'forecast' => 'all'
+        ];
 
         if (!\in_array(\strtolower($format),['json','xml'])) {
             throw new InvalidArgumentException('Invalid response format: ' . $format);
         }
 
-        if (!\in_array(\strtolower($type),['base','all'])) {
-            throw new InvalidArgumentException('Invalid type value (base / all): '. $type);
+        if (!\in_array(\strtolower($type),array_keys($types))) {
+            throw new InvalidArgumentException('Invalid type value(live / forecast): '. $type);
         }
 
 
@@ -80,7 +85,7 @@ class Weather
             'key'   => $this->key,
             'city'  => $city,
             'output'=> $format,
-            'extensions' => $type
+            'extensions' => $types[$type]
         ];
 
         try {
@@ -95,5 +100,19 @@ class Weather
 
         }
 
+    }
+
+
+    /**
+     * 获取实时天气
+     */
+    public function getLiveWeather(string $city, string $format = 'json'):array|string
+    {
+        return $this->getWeather($city, 'live', $format);
+    }
+
+    public function getForecastWeather(string $city, string $format = 'json'):array|string
+    {
+        return $this->getWeather($city,'forecast', $format);
     }
 }
