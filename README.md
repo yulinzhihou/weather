@@ -2,6 +2,7 @@
 
 <p align="center"> 🌈 基于高德地图接口的 PHP 天气信息组件包 🌈</p>
 
+[![Tests](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml/badge.svg)](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml)
 
 ## 安装
 
