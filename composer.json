@@ -1,0 +1,30 @@
+{
+    "name": "beans\/weather",
+    "description": "A Weather SDK for AMAP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yulinzhihou",
+            "email": "yulinzhihou@163.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beans\\Weather\\": "./src"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "mockery/mockery": "^1.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Beans\\Weather\\ServiceProvider"
+            ]
+        }
+    }
+}
