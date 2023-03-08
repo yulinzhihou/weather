@@ -3,7 +3,7 @@
 <p align="center"> 🌈 基于高德地图接口的 PHP 天气信息组件包 🌈</p>
 
 [![Tests](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml/badge.svg)](https://github.com/yulinzhihou/weather/actions/workflows/tests.yml)
-![StyleCI build status](https://github.styleci.io/repos/610124774)
+![StyleCI build status](https://github.styleci.io/repos/610124774/shield)
 
 ## 安装
 
